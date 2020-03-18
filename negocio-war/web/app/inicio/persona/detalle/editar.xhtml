@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.persona.detalle.content">
+
+                <div align="center">
+                    <h:form id="ff_">
+                        <p:panelGrid columns="2">
+
+                            <h:panelGroup>
+                                <h:outputText value="Nombres" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{personaControl.obj.nombres}" required="true" requiredMessage="Requerido!" id="attr_nombres"/>
+                                <p:message for="attr_nombres"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Apellidos" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{personaControl.obj.apellidos}" required="true" requiredMessage="Requerido!" id="attr_apellidos"/>
+                                <p:message for="attr_apellidos"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Numero de documento" styleClass="label"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{personaControl.obj.numdocumento}" required="true" requiredMessage="Requerido!" id="attr_numdocumento"/>
+                                <p:message for="attr_numdocumento"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Tipo de persona" styleClass="label"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <h:selectOneMenu id="attr_tipo" value="#{personaControl.obj.tipo}" required="true" requiredMessage="Requerido !" >
+                                    <f:selectItem itemValue="CLIENTE" itemLabel="CLIENTE"/>
+                                    <f:selectItem itemValue="USUARIO" itemLabel="USUARIO"/>
+                                    <f:selectItem itemValue="VENDEDOR" itemLabel="VENDEDOR"/>
+                                </h:selectOneMenu>
+                                <p:message for="attr_tipo"/>
+                            </h:panelGroup>
+
+                        </p:panelGrid>
+                        <br/><br/>
+
+                        <h:inputHidden value="#{personaControl.obj.idpersona}"/>
+
+                        <p:commandButton value="Guardar Cambios" action="#{personaControl.editar()}" icon="fa fa-save" ajax="false">
+                            <f:param name="idpersona_" value="#{param.idpersona_}"/>
+                        </p:commandButton>
+                        <br/><br/>
+                        <p:message for="ff_"/>
+                    </h:form>
+
+                    <h:panelGroup rendered="#{personaControl.successful}">
+                        <script type="text/javascript">
+                            document.location.href = '#{utilControl.protocolHostPortContext}/app/inicio/persona/detalle/detalle.xhtml?idpersona_=#{personaControl.obj.idpersona}';
+                        </script>
+                    </h:panelGroup>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

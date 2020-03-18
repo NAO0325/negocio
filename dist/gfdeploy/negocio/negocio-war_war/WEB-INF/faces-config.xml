@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <!-- Reglas Generadas -->
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.buscar</from-outcome>
+            <to-view-id>/app/inicio/persona/buscar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.lista</from-outcome>
+            <to-view-id>/app/inicio/persona/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.nuevo</from-outcome>
+            <to-view-id>/app/inicio/persona/nuevo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.detalle.carteras</from-outcome>
+            <to-view-id>/app/inicio/persona/detalle/carteras.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.detalle.detalle</from-outcome>
+            <to-view-id>/app/inicio/persona/detalle/detalle.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.detalle.editar</from-outcome>
+            <to-view-id>/app/inicio/persona/detalle/editar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.persona.detalle.eliminar</from-outcome>
+            <to-view-id>/app/inicio/persona/detalle/eliminar.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>app.inicio.productos.buscar</from-outcome>
+            <to-view-id>/app/inicio/productos/buscar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.lista</from-outcome>
+            <to-view-id>/app/inicio/productos/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.compras</from-outcome>
+            <to-view-id>/app/inicio/productos/compras.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.nuevo</from-outcome>
+            <to-view-id>/app/inicio/productos/nuevo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.detalle.carteras</from-outcome>
+            <to-view-id>/app/inicio/productos/detalle/carteras.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.detalle.detalle</from-outcome>
+            <to-view-id>/app/inicio/productos/detalle/detalle.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.detalle.editar</from-outcome>
+            <to-view-id>/app/inicio/productos/detalle/editar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.productos.detalle.eliminar</from-outcome>
+            <to-view-id>/app/inicio/productos/detalle/eliminar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>app.inicio.ventas.lista</from-outcome>
+            <to-view-id>/app/inicio/ventas/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>
+                                    

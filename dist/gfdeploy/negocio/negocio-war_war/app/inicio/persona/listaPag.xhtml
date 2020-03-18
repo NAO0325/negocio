@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jc="http://jc.faces/component">
+
+    <body>
+
+        <ui:composition template="./../../_templateEmbed.xhtml">
+
+            <ui:define name="content.embed">
+
+                <h:outputText value="#{personaControl.recuperaAllRegPaginationNoLight()}"/>
+
+                <br/>
+                <div>
+                    <p:dataTable reflow="true" var="lst" value="#{personaControl.lst}" tableStyle="width:auto">
+
+                        <p:column>
+                            <jc:pagColumn
+                                for="0"
+                                attributeName="nombres"
+                                attributeDisplay="Nombres"
+                                />
+                            <h:panelGroup>
+                                <a href="#{utilControl.protocolHostPortContext}/app/inicio/persona/detalle/detalle.xhtml?idpersona_=#{lst.idpersona}">
+                                    <h:outputText value="#{lst.nombres}"/>
+                                </a>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column>
+                            <jc:pagColumn
+                                for="0"
+                                attributeName="apellidos"
+                                attributeDisplay="Apellidos"
+                                value="#{lst.apellidos}"
+                                />
+                        </p:column>
+                        
+                         <p:column>
+                            <jc:pagColumn
+                                for="0"
+                                attributeName="numdocumento"
+                                attributeDisplay="Numero documento"
+                                value="#{lst.numdocumento}"
+                                />
+                        </p:column>
+                        
+                        <p:column>
+                            <jc:pagColumn
+                                for="0"
+                                attributeName="tipo"
+                                attributeDisplay="Tipo"
+                                value="#{lst.tipo}"
+                                />
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

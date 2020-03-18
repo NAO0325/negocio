@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.persona.detalle.content">
+
+                <p:panel>
+                    <div align="center">
+
+                        <h:form>
+                            <br/><br/> 
+                            <b style="font-size: 18px;">Realmente desea eliminar este registro ?</b>
+
+                            <br/><br/>
+                            <h:panelGrid columns="2" cellpadding="10" cellspacing="5">
+
+
+                                <h:panelGroup>
+                                    <p:commandButton value="No" icon="fa fa-arrow-left" ajax="false" action="app.inicio.persona.detalle.detalle">
+                                        <f:param name="idpersona_" value="#{param.idpersona_}"/>
+                                    </p:commandButton>
+                                </h:panelGroup>
+
+                                <h:panelGroup>
+                                    <p:commandButton value="Si" icon="fa fa-close" ajax="false" action="#{personaControl.eliminar()}">
+                                        <f:param name="idpersona_" value="#{param.idpersona_}"/>
+                                    </p:commandButton>
+                                </h:panelGroup>
+
+                            </h:panelGrid>
+
+                            <br/><br/>
+                        </h:form>
+
+                    </div>
+
+                </p:panel>
+
+                <h:panelGroup rendered="#{personaControl.successful}">
+                    <script type="text/javascript">
+                        document.location.href = '#{utilControl.protocolHostPortContext}/app/inicio/persona/lista.xhtml';
+                    </script>
+                </h:panelGroup>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

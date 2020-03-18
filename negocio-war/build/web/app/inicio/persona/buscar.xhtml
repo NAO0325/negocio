@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jc="http://jc.faces/component">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.persona.content">
+
+                <h:outputText value="#{personControl.recuperaCountTotalReg()}"/>
+
+                <p:panel header="Buscar Person">
+
+                    <div align="center">
+                        <h:form>
+                            <br/><br/>
+                            <i style="color:gray">Name</i>
+                            <br/><br/>
+                            <p:inputText value="#{personaControl.valBusq}"/>
+                            <br/><br/>
+                            <p:commandButton value="Buscar" icon="fa fa-search" ajax="false"/>
+                            <br/><br/>
+                        </h:form>
+
+                    </div>
+
+                    <h:panelGroup rendered="#{personaControl.valBusq!=null}">
+                        <div align="center">
+
+                            <h:outputText value="#{personaControl.recuperaBuscarCount()}"/>
+
+                            Registros Encontrados (<b>#{personaControl.totalConsulta}</b>) - Criterio " <b>#{personaControl.valBusq}</b> "
+
+                            <jc:pagList
+                                id="0"
+                                count="#{personaControl.totalConsulta}"
+                                urlPageData="#{utilControl.protocolHostPortContext}/app/inicio/persona/buscarPag.xhtml?query_=#{personaControl.valBusq}"
+                                maxRegLista="#{personaControl.maxRegLista}"/>
+
+                        </div>
+                        <br/><br/>
+                    </h:panelGroup>
+                </p:panel>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

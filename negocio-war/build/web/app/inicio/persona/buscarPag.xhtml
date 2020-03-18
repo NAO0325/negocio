@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../_templateEmbed.xhtml">
+
+            <ui:define name="content.embed">
+
+                <h:outputText value="#{personaControl.setValBusq(param.query_)}"/>
+                <h:outputText value="#{personaControl.buscarNoLigth()}"/>
+
+                <br/>
+                <div>
+                    <ui:repeat var="lst" value="#{personaControl.lst}" >
+                        <p:panel>
+                            <div align="left">
+                                <a href="#{utilControl.protocolHostPortContext}/app/inicio/persona/detalle/detalle.xhtml?idpersona_=#{lst.idpersona}">
+                                    <h:outputText value="#{lst.nombres} #{lst.apellidos}" class="busqBlue"/>
+                                </a>
+                                <p:separator/>
+                                <div>
+                                    Dcoumento <h:outputText value="#{lst.numdocumento}"/>
+                                </div>
+                                <div class="busqGreen">
+                                    <h:outputText value="#{lst.tipo}"/>
+                                </div>
+
+                            </div>
+                        </p:panel>    
+                        <br/>
+                    </ui:repeat>
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

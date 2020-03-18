@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.productos.detalle.content">
+
+                <div align="center">
+                    <h:form id="ff_">
+                        <p:panelGrid columns="2">
+
+                            <h:panelGroup>
+                                <h:outputText value="Nombres" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{productoControl.obj.nombre}" required="true" requiredMessage="Requerido!" id="attr_nombres"/>
+                                <p:message for="attr_nombres"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Tipo de producto" styleClass="label"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <h:selectOneMenu id="attr_tipo" value="#{productoControl.obj.tipo}" required="true" requiredMessage="Requerido !" >
+                                    <f:selectItem itemValue="CAMISA" itemLabel="CAMISA"/>
+                                    <f:selectItem itemValue="CAMISETA" itemLabel="CAMISETA"/>
+                                    <f:selectItem itemValue="PANTALON" itemLabel="PANTALON"/>
+                                    <f:selectItem itemValue="CHAQUETA" itemLabel="CHAQUETA"/>
+                                    <f:selectItem itemValue="BUFANDA" itemLabel="BUFANDA"/>
+                                    <f:selectItem itemValue="GAFAS" itemLabel="GAFAS"/>
+                                </h:selectOneMenu>
+                                <p:message for="attr_tipo"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Valor ($)" styleClass="label"/>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:inputText value="#{productoControl.obj.valor}" required="true" requiredMessage="Requerido!" id="attr_valor"/>
+                                <p:message for="attr_valor"/>
+                            </h:panelGroup>
+
+                        </p:panelGrid>
+                        <br/><br/>
+
+                        <h:inputHidden value="#{productoControl.obj.idproducto}"/>
+
+                        <p:commandButton value="Guardar Cambios" action="#{productoControl.editar()}" icon="fa fa-save" ajax="false">
+                            <f:param name="idproducto_" value="#{param.idproducto_}"/>
+                        </p:commandButton>
+                        <br/><br/>
+                        <p:message for="ff_"/>
+                    </h:form>
+
+                    <h:panelGroup rendered="#{productoControl.successful}">
+                        <script type="text/javascript">
+                            document.location.href = '#{utilControl.protocolHostPortContext}/app/inicio/productos/detalle/detalle.xhtml?idproducto_=#{productoControl.obj.idproducto}';
+                        </script>
+                    </h:panelGroup>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

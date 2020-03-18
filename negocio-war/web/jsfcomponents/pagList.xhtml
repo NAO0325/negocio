@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <!-- Pagination -->
+    <link type="text/css" rel="stylesheet" href="#{utilControl.protocolHostPortContext}/libscript/jquery-simple-pag/simplepagination/simplePagination.css"/>
+    <script type="text/javascript" src="#{utilControl.protocolHostPortContext}/libscript/jquery-simple-pag/simplepagination/jquery.simplePagination.js"></script>
+    <!-- Pagination -->
+
+    <h:panelGroup>
+
+        <div id="list#{id}_">
+        </div>
+        <div id="pag#{id}_" align="right">
+        </div>
+        <script type="text/javascript" src="#{utilControl.protocolHostPortContext}/libscript/jquery-simple-pag/simplepag.js"></script>
+        <script type="text/javascript">
+            var objPag#{id}_ = new simplepag_(#{count},#{maxRegLista}, "pag#{id}_", "list#{id}_", "#{urlPageData}");
+        </script>
+    </h:panelGroup>
+
+</ui:composition>

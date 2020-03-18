@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <p:link href="javascript:void();"
+       style="#{style}"
+       title="#{title}"
+       class="#{class}"
+       onclick="#{onclick}$(this).colorbox({iframe:#{iframe}, title: this.title, href: '#{href}', width: '#{width}', height: '#{height}'});">
+        <span class="#{icon}" style="color: #006699"></span>  #{label}</p:link>
+</html>

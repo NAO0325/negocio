@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.ventas.content">
+
+                <h:outputText value="#{ventaControlNegocio.listarVentas()}"/>
+
+                <div align="center">
+                    <h:form id="ff_"> 
+
+                        <h:outputText value="#{utilControl.msg}" escape="false"/>
+
+                        <p:panelGrid columns="2">
+
+                            <h:panelGroup>
+                                <h:outputText value="Fecha Inicio" styleClass="label"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <p:calendar value="#{ventaControlNegocio.fechaInicio}" 
+                                            id="atr_fechaInicio"  pattern="yyyy-MM-dd hh:mm a" 
+                                            showOn="button" showButtonPanel="true" navigator="true"/>
+                                <p:message for="atr_fechaInicio"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Fecha Fin" styleClass="label"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <p:calendar value="#{ventaControlNegocio.fechaFin}" 
+                                            id="atr_fechaFin"  pattern="yyyy-MM-dd hh:mm a" 
+                                            showOn="button" showButtonPanel="true" navigator="true"/>
+                                <p:message for="atr_fechaFin"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Cliente" styleClass="label"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:selectOneMenu id="attr_idcliente" 
+                                                 value="#{ventaControlNegocio.idpersonaCliente}">
+                                    <f:selectItems value="#{ventaControlNegocio.selectAllClienteReporte}"/>
+                                </h:selectOneMenu>
+                                <p:message for="attr_idcliente"/>
+                            </h:panelGroup>
+
+                        </p:panelGrid>
+
+                        <br/><br/>
+                        <p:commandButton value="CONSULTAR VENTAS" action="#{ventaControlNegocio.consultar()}" icon="fa fa-search" ajax="true" update="@form"/>
+                        <br/><br/>
+
+                        <p:panelGrid id="tblVentas" columns="1">
+                            <p:dataTable reflow="true" var="v" value="#{ventaControlNegocio.lstGeneral}" tableStyle="width:auto" emptyMessage="No se ha seleccionado ningun producto">
+
+                                <p:column headerText="No. Venta">
+                                    <h:panelGroup>
+                                        <h:outputText value="#{v.idventa}"/>
+                                    </h:panelGroup>
+                                </p:column>
+
+                                <p:column headerText="Fecha">
+                                    <h:panelGroup>
+                                        <h:outputText value="#{v.fecha}">
+                                            <f:convertDateTime pattern="yyyy-MM-dd hh:mm a"/>
+                                        </h:outputText>
+                                    </h:panelGroup>
+                                </p:column>
+
+                                <p:column headerText="Vendedor">
+                                    <h:panelGroup>
+                                        <h:outputText value="#{v.idpersonaVendedor.nombres} #{v.idpersonaVendedor.apellidos}"/>
+                                    </h:panelGroup>
+                                </p:column>
+
+                                <p:column headerText="Cliente">
+                                    <h:panelGroup>
+                                        <h:outputText value="#{v.idpersonaCliente.nombres} #{v.idpersonaCliente.apellidos}"/>
+                                    </h:panelGroup>
+                                </p:column>
+
+                                <p:column headerText="Total">
+                                    <h:panelGroup>
+                                        <h:outputText value="#{v.total}">
+                                            <f:convertNumber currencySymbol = "$" type = "currency" />
+                                        </h:outputText>
+                                    </h:panelGroup>
+                                </p:column>
+
+                                <p:column headerText="Mas Info">
+                                    <h:panelGroup>
+                                        <a href="javascript:void();" 
+                                           onclick="$(this).colorbox({iframe: true, href: '#{utilControl.protocolHostPortContext}/app/inicio/ventas/detalleVenta.xhtml?idventa_=#{v.idventa}', width: '70%', height: '400px'});" 
+                                           title="Detalle de venta" class="icoAdd" style="text-decoration: underline">
+                                            [Ver mas...]</a>
+                                    </h:panelGroup>
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:panelGrid>
+
+                    </h:form>
+
+                    <br/>
+
+                    <p:commandButton value="Descargar Informe" type="button" icon="fa fa-file-pdf-o">
+                        <p:printer target="ff_:tblVentas" />
+                    </p:commandButton>
+
+                </div>
+
+                <br/>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

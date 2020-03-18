@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../_templateBlank.xhtml">
+
+            <ui:define name="app-admin.contentBlank">
+
+                <h:outputText value="#{ventaControl.listarItems()}"/>
+
+                <div align="center">
+                    <p:dataTable reflow="true" var="it" value="#{ventaControl.lstItem}" tableStyle="width:auto" emptyMessage="No se encuentran items asociados">
+
+                        <f:facet name="header">
+                            Items de la venta
+                        </f:facet>
+
+                        <p:column headerText="No. Item">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.iditem}"/>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column headerText="Producto">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.idproducto.nombre}"/>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column headerText="Tipo">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.idproducto.tipo}"/>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column headerText="Cantidad">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.cantidad}"/>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column headerText="Valor Unitario">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.idproducto.valor}">
+                                    <f:convertNumber currencySymbol = "$" type = "currency" />
+                                </h:outputText>
+                            </h:panelGroup>
+                        </p:column>
+
+                        <p:column headerText="Total">
+                            <h:panelGroup>
+                                <h:outputText value="#{it.cantidad * it.idproducto.valor}">
+                                    <f:convertNumber currencySymbol = "$" type = "currency" />
+                                </h:outputText>
+                            </h:panelGroup>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

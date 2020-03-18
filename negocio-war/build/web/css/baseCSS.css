@@ -1,0 +1,136 @@
+/* 
+    Document   : baseCSS
+    Created on : 25-abr-2012, 14:58:49
+    Author     : root
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+a{
+    color:  #00529B;
+}
+
+.label { font-weight: bold; color: #666666 }
+
+
+.oblig { color:orangered; }
+
+
+.autocomplete_{
+    border:1px solid gray;
+    background-image: url('icoBuscar.gif');
+    background-repeat:no-repeat;
+    padding-right:18px;
+    border: 0px;
+    background-position: right;
+    height: 20px;
+}
+
+/* MENSAJES DE ALERTA */
+.info-blue, .info-green, .info-yellow, .info-red{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.info-blue {
+    color:#00529B;
+    background-color:#BDE5F8;
+    background-image: url('msg_info.png');
+    background-size: 30px 30px;
+}
+.info-green {
+    color:#4F8A10;
+    background-color:#DFF2BF;
+    background-image:url('msg_info.png');
+    background-size: 30px 30px;
+}
+.info-yellow {
+    color:#9F6000;
+    background-color:#FEEFB3;
+    background-image: url('msg_alerta.png');
+    background-size: 30px 30px;
+}
+.info-red {
+    color:#D8000C;
+    background-color:#FFBABA;
+    background-image: url('msg_error.png');
+    background-size: 30px 30px;
+}
+.info, .exito, .alerta, .error {
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:13px;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('img/info.png');
+}
+.exito {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('img/exito.png');
+}
+.alerta {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('img/msg_alerta.png');
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('img/error.png');
+}
+
+/*RESULT_BUSQUEDA*/
+.busqBlue {
+    color: #003366;
+    font-size: 19px;
+}
+.busqGreen {
+    color: green;
+    font-style: italic;
+}
+
+.fotoPerfil{
+    width: 62px;
+    height: 62px;
+    background: top left no-repeat;
+    background-size: 62px 62px;
+    border-radius: 60px;
+}
+
+.verFoto{
+    width: 200px;
+    height: 200px;
+    background: top left no-repeat;
+    background-size: 200px 200px;
+    border-radius: 60px;
+}
+
+.icoAdd {
+    background: url(icoAdd.png) no-repeat left center;
+    border:0px;
+    margin: 0 10px 0 5px;
+    padding-left: 20px; }
+
+.icoEliminar {
+    background: url(icoEliminar.png) no-repeat left center;
+    border:0px;
+    margin: 0 10px 0 5px;
+    padding-left: 20px; }
+
+.icoEliminar2 {
+    background: url(icoEliminar2.png) no-repeat left center;
+    border:0px;
+    margin: 0 10px 0 5px;
+    padding-left: 20px; }

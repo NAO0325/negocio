@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./_template.xhtml">
+
+            <ui:define name="app.inicio.productos.content">
+
+                <h:outputText value="#{ventaControlNegocio.recuperaArticulos()}" />
+
+                <div align="center">
+                    <h:form id="ff_"> 
+
+                        <h:outputText value="#{utilControl.msg}" escape="false"/>
+
+                        <p:panelGrid columns="2">
+
+                            <h:panelGroup>
+                                <h:outputText value="Vendedor" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:selectOneMenu id="attr_idvendedor" required="true" requiredMessage="¡Requerido!" 
+                                                 value="#{ventaControlNegocio.idpersonaVendedor}">
+                                    <f:selectItems value="#{ventaControlNegocio.selectAllVendedor}"/>
+                                </h:selectOneMenu>
+                                <p:message for="attr_idvendedor"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Cliente" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:selectOneMenu id="attr_idcliente" required="true" requiredMessage="¡Requerido!" 
+                                                 value="#{ventaControlNegocio.idpersonaCliente}">
+                                    <f:selectItems value="#{ventaControlNegocio.selectAllCliente}"/>
+                                </h:selectOneMenu>
+                                <p:message for="attr_idcliente"/>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputText value="Total Venta" styleClass="label"/>
+                                <h:outputText value="*" styleClass="oblig"/>
+                            </h:panelGroup>
+                            <h:outputText value="$#{ventaControlNegocio.totalVenta}">
+                                <f:convertNumber currencySymbol = "$" type = "currency" />
+                            </h:outputText>
+                        </p:panelGrid>
+
+                        <br/><br/>
+                        <p:commandButton value="REGISTRAR VENTA" action="#{ventaControlNegocio.nuevo()}" icon="fa fa-credit-card" ajax="true" update="@form"/>
+                        <br/><br/>
+
+                        <p:dataTable reflow="true" var="it" value="#{ventaControlNegocio.lstItem}" tableStyle="width:auto" emptyMessage="No se ha seleccionado ningun producto">
+
+                            <p:column headerText="Producto">
+                                <h:panelGroup>
+                                    <h:outputText value="#{it.idproducto.nombre}"/>
+                                </h:panelGroup>
+                            </p:column>
+
+                            <p:column headerText="Cantidad">
+                                <h:panelGroup>
+                                    <h:outputText value="#{it.cantidad}"/>
+                                </h:panelGroup>
+                            </p:column>
+
+                            <p:column headerText="Subtotal">
+                                <h:panelGroup>
+                                    <h:outputText value="#{it.cantidad * it.idproducto.valor}">
+                                        <f:convertNumber currencySymbol = "$" type = "currency" />
+                                    </h:outputText>
+                                </h:panelGroup>
+                            </p:column>
+
+                        </p:dataTable>
+
+                        <h:panelGroup rendered="#{ventaControlNegocio.successful}">
+                            <script type="text/javascript">
+                                document.location.href = '#{utilControl.protocolHostPortContext}/app/inicio/ventas/lista.xhtml';
+                            </script>
+                        </h:panelGroup>
+
+                    </h:form>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

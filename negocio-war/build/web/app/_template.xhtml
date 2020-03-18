@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="theme-color" content="#{themeControl.themeColors[themeControl.theme]}" />
+        </f:facet>
+
+        <!-- <h:outputText value="#{loginAdminControl.validaSession()}" escape="false"/>-->
+
+        <title>Negocio - Prueba</title>
+        <link rel="shortcut icon" href="#{utilControl.protocolHostPortContext}/img/app/short.png"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="#{utilControl.protocolHostPortContext}/css/baseCSS.css"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="#{utilControl.protocolHostPortContext}/css/flags32.css"/>
+
+        <h:outputScript name="js/nanoscroller.js" library="ultima-layout" />
+        <h:outputScript name="js/layout.js" library="ultima-layout" />
+        <h:outputScript name="js/ripple.js" library="ultima-layout" />
+        <h:outputScript name="js/swipe.js" library="ultima-layout" />
+
+
+        <!-- Color Box -->
+        <link rel="stylesheet" href="#{utilControl.protocolHostPortContext}/libscript/colorbox/colorbox-master/example1/colorbox.css" />
+        <script src="#{utilControl.protocolHostPortContext}/libscript/colorbox/colorbox-master/jquery.colorbox-min.js"></script>
+
+        <ui:insert name="head"/>
+    </h:head>
+
+    <h:body styleClass="main-body #{themeControl.compact ? 'layout-compact' : null}">
+
+        <div class="layout-wrapper #{themeControl.menuLayout} #{themeControl.orientationRTL ? 'layout-rtl' : null}">
+            <ui:include src="./topbar.xhtml" />
+            <ui:include src="./menu.xhtml" />
+
+            <div class="layout-main">
+
+                <div class="layout-content">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-8 ui-lg-10" style="min-height: 350px;">
+                            <ui:insert name="app.content"/>
+                            <h:outputText value="#{utilControl.msg}" escape="false"/>
+                        </div>
+                        <div class="ui-g-12 ui-md-4 ui-lg-2">
+                            <ui:insert name="app.menu"></ui:insert>
+                        </div>
+                    </div>
+                </div>
+
+                <ui:include src="./footer.xhtml" />
+            </div>
+        </div>
+
+        <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+            <f:facet name="start">
+                <i class="fa fa-circle-o-notch fa-spin ajax-loader" aria-hidden="true"></i>
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+
+        <h:outputStylesheet name="css/nanoscroller.css" library="ultima-layout" />
+        <h:outputStylesheet name="css/animate.css" library="ultima-layout" />
+        <h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
+        <h:outputStylesheet name="css/layout-#{themeControl.theme}.css" library="ultima-layout" />
+    </h:body>
+
+</html>

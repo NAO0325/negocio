@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib>
+    <namespace>http://jc.faces/component</namespace>
+    <tag>
+        <tag-name>colorbox</tag-name>
+        <source>colorbox.xhtml</source>
+    </tag>
+    <tag>
+        <tag-name>pagList</tag-name>
+        <source>pagList.xhtml</source>
+    </tag>
+    <tag>
+        <tag-name>pagColumn</tag-name>
+        <source>pagColumn.xhtml</source>
+    </tag>
+</facelet-taglib>

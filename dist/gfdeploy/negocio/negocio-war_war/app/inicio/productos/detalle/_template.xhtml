@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../_template.xhtml">
+
+            <ui:define name="app.inicio.productos.content">
+
+                <h:outputText value="#{productoControl.recuperaById()}"/>
+
+                <p:panel header="Detalles de Person">
+                    <h:outputText value="#{productoControl.obj.nombre}" style="font-size: 20px;"/>
+                    <p:separator/>
+                    <p:menubar>
+                        <p:menuitem value="Detalle" url="#{utilControl.protocolHostPortContext}/app/inicio/productos/detalle/detalle.xhtml?idproducto_=#{param.idproducto_}" icon="fa fa-hand-o-right" />
+                        <p:menuitem value="Editar" url="#{utilControl.protocolHostPortContext}/app/inicio/productos/detalle/editar.xhtml?idproducto_=#{param.idproducto_}" icon="fa fa-pencil-square-o" />
+                        <p:menuitem value="Eliminar" url="#{utilControl.protocolHostPortContext}/app/inicio/productos/detalle/eliminar.xhtml?idproducto_=#{param.idproducto_}" icon="fa fa-close" />
+                    </p:menubar>
+                    <br/>
+                    <ui:insert name="app.inicio.productos.detalle.content"></ui:insert>
+                </p:panel>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
